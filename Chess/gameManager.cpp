@@ -23,33 +23,13 @@ gameManager::~gameManager()
 }
 
 /**
-	TODO list
-	initialize the board
-	set correct xy coordinates, default is (-1, -1)
-	link all board squares together
-	initialize all chess pieces
-	set location of chess pieces + occupants of each square on the board
-	check + set possible moves for all pieces
-	draw board
-	start game
-	prompt for move
-	after each move, check checkmate status
-	change player turn if game not over
-	remember to check possible moves (refresh) after each turn
-
 	TODO add promotion
 	change checkpossiblemoves to check for type - use new helper method
-
-	TODO pawn forward moves should be re-added to universal movelist <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	because checkmate checking algorithm has changed
-	so it should be ok already
 **/
 
 // Runs the entire chess game from start to finish
 int gameManager::run()
 {
-	// TODO code goes here
-
 	/********** START : Board initialization **********/
 
 	// Sets the x and y coordinates of each square on the board to the correct value (defaults to -1, -1)
@@ -61,7 +41,7 @@ int gameManager::run()
 		}
 	}
 
-	// Link all board squares together <<<<<<<<<<<<<<<
+	// Link all board squares together
 	for (int y = 0; y < 8; y++)
 	{
 		for (int x = 0; x < 8; x++)
@@ -299,7 +279,7 @@ void gameManager::setPieceInfoAndLoc(int x, int y, int count, string color, stri
 			gameBoard[count - 8][1].setOccupant(&pawns[count]);
 		}
 	}
-	else if (type.compare("rook") == 0) // ROOks and bishop and knights looks the same, try to reuse <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	else if (type.compare("rook") == 0)
 	{
 		rooks[count].setXY(x, y);
 		gameBoard[x][y].setOccupant(&rooks[count]);
@@ -1164,7 +1144,7 @@ void gameManager::kingAllDirectionsCheck(string color, int num, boardSquare * te
 	// Up
 	if (y_coord > 0)
 	{
-		tempSquare = tempSquare->getDirection('U');// Check danger move here <<<<<<<<<<<<<<<<<<<<<<<<<<
+		tempSquare = tempSquare->getDirection('U');
 		tempSquareOccupantCheck(color, "king", num, tempSquare, x_coord, y_coord);
 		// Reset tempSquare to the king's position
 		tempSquare = &gameBoard[x_coord][y_coord];
@@ -1475,7 +1455,8 @@ bool gameManager::inputValidityCheck(string input, string front, string back, st
 	/** Back portion **/
 	if (back.compare("possiblemoves") == 0)
 	{
-		cout << "KEKE I'M THE LEAD ACTRESS NOW" << endl;
+		// TODO make this happen
+		
 	}
 	else
 	{
