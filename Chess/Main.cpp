@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+	//Testing
 	gameManager gm;
 	gm.run();
 }
